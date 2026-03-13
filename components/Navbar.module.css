@@ -87,6 +87,7 @@
 }
 
 .button {
+  text-decoration: none;
   margin: 10px;
   display: flex;
   align-items: center;
@@ -106,8 +107,8 @@
 
 .active {
   background-color: #7095f2;
-  color: white;
   border-color: #183358;
+  color: white;
 }
 
 .icon {
@@ -121,8 +122,4 @@
   font-size: 16px;
   font-weight: 600;
   color: black;
-}
-
-.link {
-  text-decoration: none;
 }

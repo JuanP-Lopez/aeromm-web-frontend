@@ -30,14 +30,13 @@ function Navbar() {
     const isActive = pathName === href;
 
     return (
-      <Link href={href} className={styles.link}>
-      <button
+      <Link
+        href={href}
         onClick={() => setActive(label)}
         className={`${styles.button} ${active === label ? styles.active : ""}`}
       >
         <FontAwesomeIcon icon={icon} className={styles.icon} />
         <span>{label}</span>
-      </button>
       </Link>
     );
   };
@@ -52,13 +51,13 @@ function Navbar() {
         <h3 className={styles.title}>Administración</h3>
         <Button label="Sistema" icon={faUserMd} href={"/"}/>
         <Button label="Grupos" icon={faUsers} href={"/GroupsPage"}/>
-        <Button label="Usuarios" icon={faUser} href={"/"}/>
+        <Button label="Usuarios" icon={faUser} href={"/LoginPage"}/>
       </div>
 
       <div className={styles.section}>
         <h3 className={styles.title}>Registro</h3>
-        <Button label="Historial" icon={faListAlt} href={"/"}/>
-        <Button label="Seguridad" icon={faLock} href={"/"}/>
+        <Button label="Historial" icon={faListAlt} href={"/RegisterPage"}/>
+        <Button label="Seguridad" icon={faLock} href={"/ChangePage"}/>
       </div>
 
       <div className={styles.section}>
