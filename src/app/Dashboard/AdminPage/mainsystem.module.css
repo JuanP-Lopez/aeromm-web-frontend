@@ -1,42 +1,37 @@
-* {
+.container {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
-
 
 .main {
   margin: 10px;
 }
 
-
-.main-header {
+.mainHeader {
   display: flex;
   flex-direction: row;
-  color: black;
+  color: white;
 }
 
-
-.main-titles {
+.mainTitles {
   display: flex;
   flex-direction: column;
 }
 
-
-.main-titles p {
+.mainTitles p {
   font-size: 12px;
-  color: #444343;
+  color: white;
 }
 
-
-.main-options {
+.mainOptions {
   display: flex;
   flex-direction: row;
   padding-left: 40vw;
 }
 
-
-.main-options button {
+.mainOptions button {
   width: 180px;
   height: 40px;
   margin-right: 10px;
@@ -46,43 +41,40 @@
   align-items: center;
 }
 
-.main-options span {
+.mainOptions span {
   font-size: 16px;
   padding: 10px;
 }
 
-.icon-options {
+.iconOptions {
   width: 18px;
   height: 18px;
 }
 
-.system-main {
-  border: 2px solid black;
+.systemMain {
+  border: 2px solid slateblue;
   border-radius: 10px;
   margin: 10px;
   width: auto;
   height: auto;
 }
 
-ul {
+.mainBar {
   list-style: none;
   display: flex;
   flex-direction: row;
-  gap: 0 20px 0 20px;
-  border: 0;
-  border-bottom: 1px rgb(69, 69, 70);
-  border-style: solid;
+  gap: 20px;
+  border-bottom: 1px solid rgb(69, 69, 70);
 }
 
-.bar-options {
-  color: black;
+.barOptions {
+  color: white;
   padding: 20px;
+  border-bottom: 3px solid transparent;
 }
 
-.bar-options:hover {
-  border: 0;
-  border-bottom: 2px blue;
-  border-style: solid;
+.mainBar .barOptions:hover {
+  border-bottom: 3px solid slateblue;
 }
 
 .search {
@@ -92,17 +84,25 @@ ul {
   width: 100%;
   padding: 10px;
   gap: 20px;
+  color: white;
 }
 
 .searchbar {
   width: 70%;
   height: 30px;
-  background-color: aliceblue;
-  border: 1px solid grey;
+  background-color: rgb(36, 36, 38);
+  border: 2px solid slateblue;
   border-radius: 10px;
   padding: 10px;
   font-size: 18px;
-  color: black;
+  color: white;
+}
+
+.searchbar:focus {
+  background-color: slateblue;
+  border: 2px solid slateblue;
+  font-weight: 800;
+  color: white;
 }
 
 .export {
@@ -110,12 +110,12 @@ ul {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  width: 80pxpx;
+  width: 80px;
   height: 80px;
   border-radius: 10px;
   border: 2px solid rgb(138, 138, 232);
   background-color: aliceblue;
-  color: black;
+  color: white;
 }
 
 .export:hover {
@@ -124,12 +124,24 @@ ul {
   color: aliceblue;
 }
 
-.icon-export {
+.iconExport {
   width: 18px;
   height: 18px;
 }
 
-.group-data {
-  width: 250px;
+.groupInfo {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  list-style: none;
+  border-bottom: 1px solid gray;
 }
 
+.groupData {
+  width: 250px;
+  padding: 10px;
+}
+
+.groupInfo .groupData:hover {
+  border-bottom: none;
+}

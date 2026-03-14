@@ -43,6 +43,9 @@ function Navbar() {
 
   return (
     <nav className={styles.nav}>
+      <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+  rel="stylesheet"></link>
       <div className={styles.section}>
         <div className={styles.header}>
           <h1 className={styles.logo}>Logo</h1>
@@ -75,10 +78,12 @@ function Navbar() {
           </div>
         </div>
         {/*Boton temporal, eliminar en la versión final*/}
-        <button className={styles.buttonclose}>
+        <Link href="/" className={styles.linkClose}>
+        <button className={"btn btn-sm btn-outline-danger"}>
           <FontAwesomeIcon icon={faClose} />
-          Cerrar sesión
+          Salir
         </button>
+        </Link>
       </div>
     </nav>
   );

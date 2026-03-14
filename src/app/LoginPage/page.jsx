@@ -1,21 +1,33 @@
 import React from "react";
-
-import "./login.css"
+import styles from "./login.module.css";
 
 function Login() {
   return (
-    <div>
-      <h2 className="header">Iniciar sesión</h2>
-      <form className="container">
-        <label>Correo electrónico</label>
+    <div className={styles.page}>
+      <h2 className={styles.header}>Iniciar sesión</h2>
+
+      <form className={styles.container}>
+        <label className={styles.label}>Correo electrónico</label>
+
         <input
+          className={styles.input}
           type="email"
           required
           placeholder="Introduce tu correo electrónico"
-        ></input>
-        <label>Contraseña</label>
-        <input type="password" required placeholder="Introduce tu contraseña"></input>
-          <button type="submit">Registrar</button>
+        />
+
+        <label className={styles.label}>Contraseña</label>
+
+        <input
+          className={styles.input}
+          type="password"
+          required
+          placeholder="Introduce tu contraseña"
+        />
+
+        <button className={styles.button} type="submit">
+          Ingresar
+        </button>
       </form>
     </div>
   );

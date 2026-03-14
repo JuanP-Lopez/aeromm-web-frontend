@@ -3,8 +3,8 @@
   flex-direction: column;
   width: auto;
   height: 100vh;
-  background-color: aliceblue;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 1);
+  background-color: rgb(20, 23, 27);
+  box-shadow: 2px 0 rgba(116, 82, 140, 0.6);
 }
 
 .header {
@@ -13,13 +13,14 @@
 
 .logo {
   font-size: 14px;
-  color: black;
+  color: white;
 }
 
 .section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 10px;
   margin-top: 20px;
   width: 90%;
 }
@@ -29,7 +30,8 @@
   flex-direction: row;
   align-items: center;
   padding: 20px;
-  border-top: 1px solid grey;
+  gap: 20px;
+  border-top: 1px solid rgb(62, 62, 62);
 }
 
 .user {
@@ -47,10 +49,12 @@
 .username {
   font-size: 16px;
   font-weight: 300;
+  color: white;
 }
 
 .useraddress {
   font-size: 12px;
+  color: white;
 }
 
 .userpfp {
@@ -68,21 +72,25 @@
   padding: 10px;
   width: 120px;
   height: 60px;
-  color: black;
-  border-radius: 10px;
-  border: 1px solid blue;
+  color: rgb(255, 255, 255);
   background: none;
+  border-radius: 10px;
+  border: 1px solid rgb(36, 36, 79);
+}
+
+.linkClose {
+  text-decoration: none;
 }
 
 .buttonclose:hover {
-  background-color: #7095f2;
+  box-shadow: 3px 4px rgba(195, 195, 195, 0.8);
   color: white;
 }
 
 .title {
   width: 200px;
   text-align: left;
-  color: black;
+  color: white;
   font-size: 24px;
 }
 
@@ -94,20 +102,21 @@
   padding: 10px;
   width: 200px;
   height: 40px;
-  background-color: rgb(228, 224, 224);
-  border: 2px solid #424242;
+  background-color: rgb(38, 37, 37);
+  border: 2px solid rgb(106, 90, 205);
   border-radius: 10px;
   cursor: pointer;
   transition: 0.2s ease;
 }
 
 .button:hover {
-  background-color: #4480ee;
+  background-color: rgb(106, 90, 205);
+  box-shadow: 3px 4px rgba(195, 195, 195, 0.8);
 }
 
 .active {
-  background-color: #7095f2;
-  border-color: #183358;
+  background-color: rgb(106, 90, 205);
+  border-color: rgb(35, 35, 77);
   color: white;
 }
 
@@ -115,11 +124,11 @@
   width: 22px;
   height: 22px;
   margin-right: 10px;
-  color: black;
+  color: white;
 }
 
 .button span {
   font-size: 16px;
   font-weight: 600;
-  color: black;
+  color: white;
 }

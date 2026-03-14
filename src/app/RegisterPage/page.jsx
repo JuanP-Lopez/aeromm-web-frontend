@@ -1,31 +1,67 @@
 import React from "react";
-
-import "./register.css"
+import styles from "./register.module.css";
 
 function Register() {
   return (
-<div>
-    <h2 class="header">Registro</h2>
-    <form class="container">
-        <label>Nombre de usuario</label>
-        <input type="text" required placeholder="Introduce un nombre de usuario"></input>
-        
-        <label>Correo electrónico</label>
-        <input type="email" required placeholder="Introduce tu correo electrónico"></input>
-        <label>Contraseña</label>
-        <input type="password" required placeholder="Introduce una contraseña"></input>
-        <label>Confirmar contraseña</label>
-        <input type="password" required placeholder="Confirma tu contraseña"></input>
-        <div class="file-container">
-            <label for="file" class="input-image">Subir foto de perfil</label>
-            <input type="file" accept="image/*" name="file" id="file" onchange="previewImage(event)"></input>
+    <div className={styles.wrapper}>
+      <h2 className={styles.header}>Registro</h2>
+
+      <form className={styles.container}>
+        <label className={styles.label}>Nombre de usuario</label>
+        <input
+          type="text"
+          required
+          placeholder="Introduce un nombre de usuario"
+          className={styles.input}
+        />
+
+        <label className={styles.label}>Correo electrónico</label>
+        <input
+          type="email"
+          required
+          placeholder="Introduce tu correo electrónico"
+          className={styles.input}
+        />
+
+        <label className={styles.label}>Contraseña</label>
+        <input
+          type="password"
+          required
+          placeholder="Introduce una contraseña"
+          className={styles.input}
+        />
+
+        <label className={styles.label}>Confirmar contraseña</label>
+        <input
+          type="password"
+          required
+          placeholder="Confirma tu contraseña"
+          className={styles.input}
+        />
+
+        <div className={styles.fileContainer}>
+          <label htmlFor="file" className={styles.inputImage}>
+            Subir foto de perfil
+          </label>
+
+          <input
+            type="file"
+            accept="image/*"
+            name="file"
+            id="file"
+            className={styles.fileInput}
+          />
         </div>
-        <div class="preview-container">
-            <img id="preview"></img>
+
+        <div className={styles.previewContainer}>
+          <img id="preview" className={styles.preview} alt="preview" />
         </div>
-        <button type="submit">Registrar</button>
-    </form>
-</div>
+
+        <button type="submit" className={styles.button}>
+          Registrar
+        </button>
+      </form>
+    </div>
   );
 }
 
