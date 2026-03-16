@@ -1,4 +1,4 @@
-import styles from "./mainsystem.module.css";
+import styles from "./Mainsystem.module.css";
 import Group from "../Groups/Group";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

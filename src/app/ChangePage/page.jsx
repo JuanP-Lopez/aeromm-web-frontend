@@ -1,9 +1,31 @@
-import React from "react";
-import styles from "./change.module.css";
+"use client";
+
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import styles from "./Change.module.css";
 
 function ChangeUser() {
+  const router = useRouter();
+  const [leaving, setLeaving] = useState(false);
+  const handleClick = () => {
+    setLeaving(true);
+    setTimeout(() => {
+      router.push("/");
+    }, 1000);
+  };
+
   return (
     <div className={styles.wrapper}>
+      <div className={styles.btnContainer}>
+        <button
+          className={`${styles.btnBack} ${leaving ? styles.btnBackOut : ""}`}
+          onClick={handleClick}
+        >
+          <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+        </button>
+      </div>
       <h2 className={styles.header}>Cambiar datos de usuario</h2>
 
       <form className={styles.container}>

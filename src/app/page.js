@@ -1,42 +1,54 @@
-//importar bootstrap antes de los estilos propios
-//Componentes
-import Link from "next/link";
-import "./globals.css"
+"use client"
 
-//Incluir filtrado de elementos, ver si cambiando de componente los botones se arregla movimiento
+import { useState } from "react";
+import Link from "next/link";
+import styles from "./Page.module.css";
+
+//Componentes
+import Contact from "../../components/Contacto";
 
 export default function Home() {
+  const [showContact, setShowContact] = useState(false);
   return (
-    <div className={"page"}>
-      <div className={"main-container"}>
-        <div className={"navbar"}>
-          <div className={"sections"}>
+    <div className={styles.page}>
+      <div className={styles.mainContainer}>
+
+        <div className={styles.navbar}>
+          <div className={styles.sections}>
             <ul>
               <li><a href="">Acerca de</a></li>
-              <li><a href="">Contacto</a></li>
+              <li onClick={() => setShowContact(!showContact)}>Contacto</li>
               <li><a href="">Más Información</a></li>
             </ul>
           </div>
         </div>
-        <div className={"titulo"}>
-          <h1>ÆroMM</h1>
+
+        <div className={`${styles.contactBox} ${showContact ? styles.showContactBox : ""}`}>
+          <Contact />
         </div>
-        <div className={"container"}>
-          <div className={"container-btns"}>
-            <Link href="/Dashboard">
-              <button className="btn-register">
+
+        <div className={styles.titleContainer}>
+          <h1 className={styles.title}>ÆroMM</h1>
+        </div>
+
+        <div className={styles.container}>
+          <div className={styles.containerBtns}>
+
+            <Link href="/RegisterPage">
+              <button className={styles.btnRegister}>
                 Registrarse
               </button>
             </Link>
 
             <Link href="/LoginPage">
-              <button className="btn-login">
+              <button className={styles.btnLogin}>
                 Ingresar
               </button>
             </Link>
 
           </div>
         </div>
+
       </div>
     </div>
   );

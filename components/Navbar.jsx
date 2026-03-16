@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 {
   /*Navegacion*/
@@ -24,6 +24,15 @@ import {
 function Navbar() {
   const pathName = usePathname();
 
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
   const [active, setActive] = useState("Sistema");
 
   const Button = ({ label, icon, href }) => {
@@ -44,45 +53,45 @@ function Navbar() {
   return (
     <nav className={styles.nav}>
       <link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-  rel="stylesheet"></link>
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+      ></link>
       <div className={styles.section}>
         <div className={styles.header}>
-          <h1 className={styles.logo}>Logo</h1>
+          <h2 className={styles.logo}>Logo</h2>
         </div>
 
         <h3 className={styles.title}>Administración</h3>
-        <Button label="Sistema" icon={faUserMd} href={"/"}/>
-        <Button label="Grupos" icon={faUsers} href={"/GroupsPage"}/>
-        <Button label="Usuarios" icon={faUser} href={"/LoginPage"}/>
+        <Button label="Sistema" icon={faUserMd} href={"/Dashboard"} />
+        <Button label="Grupos" icon={faUsers} href={"/Dashboard/GroupsPage"} />
+        <Button label="Usuarios" icon={faUser} href={"/Dashboard"} />
       </div>
 
       <div className={styles.section}>
         <h3 className={styles.title}>Registro</h3>
-        <Button label="Historial" icon={faListAlt} href={"/RegisterPage"}/>
-        <Button label="Seguridad" icon={faLock} href={"/ChangePage"}/>
+        <Button label="Historial" icon={faListAlt} href={"/Dashboard"} />
+        <Button label="Seguridad" icon={faLock} href={"/Dashboard"} />
       </div>
 
       <div className={styles.section}>
         <h3 className={styles.title}>Acciones rápidas</h3>
-        <Button label="Exportar datos" icon={faDownload} href={"/"}/>
-        <Button label="Opciones" icon={faCogs} href={"/"}/>
+        <Button label="Exportar datos" icon={faDownload} href={"/Dashboard"} />
+        <Button label="Opciones" icon={faCogs} href={"/Dashboard/OptionsPage"} />
       </div>
 
       <div className={styles.userinfo}>
         <div className={styles.user}>
           <img src="prueba3.jpg" alt="PFP" className={styles.userpfp} />
           <div className={styles.usermaininfo}>
-            <span className={styles.username}>Usuario</span>
-            <span className={styles.useraddress}>correo</span>
+            {user ? (<span className={styles.username}>{user.name}</span>) : <span className={styles.username}>Sistema</span>}
           </div>
         </div>
         {/*Boton temporal, eliminar en la versión final*/}
         <Link href="/" className={styles.linkClose}>
-        <button className={"btn btn-sm btn-outline-danger"}>
-          <FontAwesomeIcon icon={faClose} />
-          Salir
-        </button>
+          <button className={"btn btn-sm btn-outline-danger"}>
+            <FontAwesomeIcon icon={faClose} />
+            Salir
+          </button>
         </Link>
       </div>
     </nav>
