@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import styles from "./Navbar.module.css";
+import styles from "./navbar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserMd,
@@ -62,21 +62,21 @@ function Navbar() {
         </div>
 
         <h3 className={styles.title}>Administración</h3>
-        <Button label="Sistema" icon={faUserMd} href={"/Dashboard"} />
-        <Button label="Grupos" icon={faUsers} href={"/Dashboard/GroupsPage"} />
-        <Button label="Usuarios" icon={faUser} href={"/Dashboard"} />
+        <Button label="Sistema" icon={faUserMd} href={"/dashboard"} />
+        <Button label="Grupos" icon={faUsers} href={"/dashboard/groupspage"} />
+        <Button label="Usuarios" icon={faUser} href={"/dashboard"} />
       </div>
 
       <div className={styles.section}>
         <h3 className={styles.title}>Registro</h3>
-        <Button label="Historial" icon={faListAlt} href={"/Dashboard"} />
-        <Button label="Seguridad" icon={faLock} href={"/Dashboard"} />
+        <Button label="Historial" icon={faListAlt} href={"/dashboard"} />
+        <Button label="Seguridad" icon={faLock} href={"/dashboard"} />
       </div>
 
       <div className={styles.section}>
         <h3 className={styles.title}>Acciones rápidas</h3>
-        <Button label="Exportar datos" icon={faDownload} href={"/Dashboard"} />
-        <Button label="Opciones" icon={faCogs} href={"/Dashboard/OptionsPage"} />
+        <Button label="Exportar datos" icon={faDownload} href={"/dashboard"} />
+        <Button label="Opciones" icon={faCogs} href={"/dashboard/optionspage/"} />
       </div>
 
       <div className={styles.userinfo}>

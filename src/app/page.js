@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 
 //Componentes
-import Contact from "../../components/Contacto";
+import Contact from "../../components/contacto";
 
 export default function Home() {
   const [showContact, setShowContact] = useState(false);
@@ -34,13 +34,13 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.containerBtns}>
 
-            <Link href="/RegisterPage">
+            <Link href="/registerpage">
               <button className={styles.btnRegister}>
                 Registrarse
               </button>
             </Link>
 
-            <Link href="/LoginPage">
+            <Link href="/loginpage">
               <button className={styles.btnLogin}>
                 Ingresar
               </button>

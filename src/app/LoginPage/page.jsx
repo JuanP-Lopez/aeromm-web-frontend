@@ -26,7 +26,7 @@ function Login() {
       console.log("Respuesta del servidor: ", result);
       if (result.success == true) {
         localStorage.setItem("user", JSON.stringify(result.user));
-        router.push("/Dashboard");
+        router.push("/dashboard");
       }
     } catch (error) {
       console.log("Error al enviar: ", error);

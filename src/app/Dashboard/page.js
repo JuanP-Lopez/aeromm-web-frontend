@@ -1,6 +1,6 @@
 //importar bootstrap antes de los estilos propios
 //Componentes
-import MainSystem from "./AdminPage/MainSystem";
+import MainSystem from "./adminpage/mainsystem";
 import "./globals.css"
 
 //Incluir filtrado de elementos, ver si cambiando de componente los botones se arregla movimiento

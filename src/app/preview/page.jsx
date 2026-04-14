@@ -1,4 +1,4 @@
-import Contact from "../../../components/Contacto";
+import Contact from "../../../components/contacto";
 
 export default function Preview() {
   return (

@@ -27,7 +27,7 @@ function Register() {
       const result = await res.json();
       console.log("Respuesta del servidor: ", result);
       if (result.success == true) {
-        router.push("/LoginPage");
+        router.push("/loginpage");
       }
     } catch (error) {
       console.log("Error al enviar: ", error);
