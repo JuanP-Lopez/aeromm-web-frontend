@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import styles from "./Options.module.css";
+import styles from "./options.module.css";
 
 function GroupSystem() {
   const [user, setUser] = useState("");

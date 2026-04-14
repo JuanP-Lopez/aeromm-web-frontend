@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Groups.module.css";
+import styles from "./groups.module.css";
 import GroupFull from "../Groups/GroupFull";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGroup, faPlusCircle, faSquareCheck, faUnlock, faCheck } from "@fortawesome/free-solid-svg-icons";

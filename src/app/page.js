@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import styles from "./Page.module.css";
+import styles from "./page.module.css";
 
 //Componentes
 import Contact from "../../components/Contacto";
