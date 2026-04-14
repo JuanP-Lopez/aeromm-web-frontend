@@ -9,9 +9,9 @@ function Contact() {
         <ul className={styles.contactPhones}>
           <span>Contactos directos</span>
           <li className={styles.phone}>+52 81 3271 2714</li>
-          <li className={styles.phone}>+52 1 81 2337 6977</li>
-          <li className={styles.phone}>+52 1 81 2597 4976</li>
-          <li className={styles.phone}>+52 1 667 860 1556</li>
+          <li className={styles.phone}>+52 81 2337 6977</li>
+          <li className={styles.phone}>+52 81 2597 4976</li>
+          <li className={styles.phone}>+52 667 860 1556</li>
         </ul>
         <ul className={styles.contactEmails}>
           <span>Contactos por correo</span>

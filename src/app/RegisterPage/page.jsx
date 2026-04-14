@@ -8,6 +8,35 @@ import styles from "./Register.module.css";
 
 function Register() {
   const router = useRouter();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword ] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [err, setErr] = useState({});
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = { username, email, password, confirmPassword };
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+      console.log("Respuesta del servidor: ", result);
+      if (result.success == true) {
+        router.push("/LoginPage");
+      }
+    } catch (error) {
+      console.log("Error al enviar: ", error);
+    }
+    setEmail("");
+    setPassword("");
+    setErr({});
+  };
+
   const [leaving, setLeaving] = useState(false);
   const handleClick = () => {
     setLeaving(true);
@@ -29,10 +58,12 @@ function Register() {
         </div>
         <h2 className={styles.header}>Registro</h2>
 
-        <form className={styles.container}>
+        <form className={styles.container} onSubmit={handleSubmit}>
           <label className={styles.label}>Nombre de usuario</label>
           <input
             type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
             placeholder="Introduce un nombre de usuario"
             className={styles.input}
@@ -41,6 +72,8 @@ function Register() {
           <label className={styles.label}>Correo electrónico</label>
           <input
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             placeholder="Introduce tu correo electrónico"
             className={styles.input}
@@ -49,6 +82,8 @@ function Register() {
           <label className={styles.label}>Contraseña</label>
           <input
             type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
             placeholder="Introduce una contraseña"
             className={styles.input}
@@ -57,6 +92,8 @@ function Register() {
           <label className={styles.label}>Confirmar contraseña</label>
           <input
             type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
             placeholder="Confirma tu contraseña"
             className={styles.input}

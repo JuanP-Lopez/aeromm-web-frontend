@@ -1,0 +1,67 @@
+.table {
+  width: 100%;
+  border-top: 1px solid aliceblue;
+  border-bottom: 1px solid aliceblue;
+}
+
+.tableHeader {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  table-layout: fixed;
+}
+
+.data {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 80px;
+  padding: 0 0 0 10px;
+}
+
+.dataInfo {
+  width: 250px;
+  color: white;
+}
+
+.dataMain {
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+}
+
+.dataName {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  color: white;
+}
+
+.groupIcon {
+  width: 42px;
+  height: 42px;
+}
+
+.sub {
+  font-size: 12px;
+  color: rgb(207, 207, 207);
+}
+
+.status {
+  align-content: center;
+  border-radius: 20px;
+  background-color: rgb(22, 163, 71);
+  font-weight: 800;
+  color: white; 
+  height: 30px;
+  width: 80px;
+  text-align: center;
+}
+
+.status:hover {
+  background-color: rgb(53, 232, 53);
+}

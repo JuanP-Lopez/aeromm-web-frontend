@@ -1,0 +1,47 @@
+.main {
+  width: 100%;
+  max-width: 90vw;
+  height: 100%;
+}
+
+.header {
+  width: 100vw;
+  height: auto;
+  padding: 10px;
+  color: aliceblue;
+  background-color: rebeccapurple;
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+
+.header h2 {
+  font-size: 2em;
+  font-weight: 900;
+}
+
+.tableContainer {
+  max-width: 100%;
+}
+
+.table {
+  width: 100%;
+}
+
+.tableHeader {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  table-layout: fixed;
+}
+
+.data {
+  width: 20%;
+  padding: 10px;
+  color: aliceblue;
+  border-bottom: 2px solid transparent;
+}
+
+.data:hover {
+  border-bottom: 2px solid slateblue;
+}
