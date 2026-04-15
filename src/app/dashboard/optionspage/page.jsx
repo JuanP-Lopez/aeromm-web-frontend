@@ -65,7 +65,7 @@ function GroupSystem() {
 
             <div className={styles.btns}>
               <button className="btn btn-outline-info">Cambiar idioma</button>
-              <Link href="/ChangePage">
+              <Link href="/changepage">
                 <button className="btn btn-outline-success">
                   Cambiar contraseña
                 </button>
