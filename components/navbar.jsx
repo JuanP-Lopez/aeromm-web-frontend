@@ -58,7 +58,8 @@ function Navbar() {
       ></link>
       <div className={styles.section}>
         <div className={styles.header}>
-          <h2 className={styles.logo}>Logo</h2>
+          <img src="/LogoMinimalistaAeroMM.png" alt="Logo" className={styles.imgLogo}/>
+          <h2 className={styles.logo}>AeroMailManagement</h2>
         </div>
 
         <h3 className={styles.title}>Administración</h3>

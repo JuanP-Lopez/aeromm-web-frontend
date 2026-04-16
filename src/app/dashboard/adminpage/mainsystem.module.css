@@ -5,6 +5,33 @@
   width: 100%;
 }
 
+.groupForm {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.createGroup {
+  z-index: 10;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.showCreateGroup {
+  width: 50%;
+  position: absolute;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
 .main {
   margin: 10px;
 }

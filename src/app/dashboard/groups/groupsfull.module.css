@@ -14,12 +14,11 @@
 .data {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
-  justify-content: center;
   width: 20%;
   height: 80px;
   padding: 0 0 0 10px;
+  gap: 20px;
 }
 
 .dataInfo {
@@ -63,5 +62,46 @@
 }
 
 .status:hover {
-  background-color: rgb(53, 232, 53);
+  background-color: rgb(232, 53, 53);
+}
+
+.select {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #6a5acd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.select:hover {
+  background-color: rgb(142, 134, 199);
+  border: 2px solid rgb(142, 134, 199);
+  color: white;
+  content: "?";
+}
+
+.select:checked {
+  background-color: slateblue;
+  border-color: slateblue;
+}
+
+.select:checked::after {
+  content: "✓";
+  color: white;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+.trashIcon {
+  color: red;
+  width: 20px;
+  height: 20px;
+}
+
+.trashIcon:hover {
+  color: rgb(249, 74, 74);
 }

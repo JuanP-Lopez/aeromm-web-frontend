@@ -39,8 +39,8 @@ function GroupFull({ imgGroup, name, id, members, status }) {
         </td>
 
         <td className={styles.data}>
-          <input type="checkbox" name="" id="" />
-          <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
+          <input type="checkbox" name="" id="" className={styles.select} />
+          <FontAwesomeIcon icon={faTrash} className={styles.trashIcon}></FontAwesomeIcon>
         </td>
       </tr>
     </table>

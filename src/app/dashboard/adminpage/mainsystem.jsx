@@ -1,17 +1,31 @@
+"use client";
+
 import styles from "./mainsystem.module.css";
 import Group from "../groups/group";
-import Link from "next/link";
+import CreateGroup from "../../../../components/create_group";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFileExport,
   faFilter,
   faPlusSquare,
+  faClose,
 } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 function MainSystem() {
+  const [create, setCreate] = useState(false);
+
   return (
     <div className={styles.container}>
+      <div className={styles.groupForm}>
+        <div
+          className={`${styles.createGroup} ${create ? styles.showCreateGroup : ""}`}
+        >
+          <CreateGroup />
+        </div>
+      </div>
+
       <div className={styles.main}>
         <div className={styles.mainHeader}>
           <div className={styles.mainTitles}>
@@ -25,15 +39,16 @@ function MainSystem() {
               <span>Filtrar</span>
             </button>
 
-            <Link href="/preview">
-              <button className="btn btn-outline-warning">
-                <FontAwesomeIcon
-                  icon={faPlusSquare}
-                  className={styles.iconOptions}
-                />
-                <span>Crear grupo</span>
-              </button>
-            </Link>
+            <button
+              className="btn btn-outline-warning"
+              onClick={() => setCreate(!create)}
+            >
+              <FontAwesomeIcon
+                icon={create ? faClose : faPlusSquare}
+                className={styles.iconOptions}
+              />
+              <span>{ create ? "Cerrar" : "Crear grupo"}</span>
+            </button>
           </div>
         </div>
       </div>

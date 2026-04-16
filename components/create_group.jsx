@@ -55,6 +55,10 @@ function CreateGroup() {
     } catch (error) {
       console.log("Error al crear grupo: ", error);
     }
+    setGroup("");
+    setDescription("");
+    setPic(null);
+    setPreview(null);
   };
 
   return (
