@@ -1,5 +1,6 @@
 import styles from "./mainsystem.module.css";
 import Group from "../groups/group";
+import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -24,10 +25,15 @@ function MainSystem() {
               <span>Filtrar</span>
             </button>
 
-            <button className="btn btn-outline-warning">
-              <FontAwesomeIcon icon={faPlusSquare} className={styles.iconOptions} />
-              <span>Crear grupo</span>
-            </button>
+            <Link href="/preview">
+              <button className="btn btn-outline-warning">
+                <FontAwesomeIcon
+                  icon={faPlusSquare}
+                  className={styles.iconOptions}
+                />
+                <span>Crear grupo</span>
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -49,7 +55,10 @@ function MainSystem() {
           />
 
           <button className={"btn btn-outline-info"}>
-            <FontAwesomeIcon icon={faFileExport} className={styles.iconExport} />
+            <FontAwesomeIcon
+              icon={faFileExport}
+              className={styles.iconExport}
+            />
             Exportar
           </button>
         </div>

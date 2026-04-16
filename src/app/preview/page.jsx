@@ -1,9 +1,10 @@
 import Contact from "../../../components/contacto";
+import CreateGroup from "../../../components/create_group";
 
 export default function Preview() {
   return (
-    <div style={{padding: "40px"}}>
-      <Contact/>
+    <div>
+      <CreateGroup />
     </div>
   );
 }
