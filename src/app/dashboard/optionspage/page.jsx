@@ -2,9 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import styles from "./options.module.css";
 
 function GroupSystem() {
+  const router = useRouter();
   const [user, setUser] = useState("");
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -13,6 +15,30 @@ function GroupSystem() {
       setUser(JSON.parse(storedUser));
     }
   }, []);
+
+
+  const deleteAccount = async () => {
+    const id = user.id ;
+
+    console.log("Id recuperado: ", id);
+
+    try {
+      const res = await fetch("/api/deleteuser/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(id),
+      });
+      const result = await res.json();
+      console.log("Respuesta del servidor: ", result);
+      if (result.success == true) {
+        localStorage.clear();
+        router.push("/");
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div className={styles.main}>
       <div className={styles.header}>
@@ -70,7 +96,7 @@ function GroupSystem() {
                   Cambiar contraseña
                 </button>
               </Link>
-              <button className="btn btn-outline-danger">Borrar cuenta</button>
+              <button className="btn btn-outline-danger" onClick={deleteAccount}>Borrar cuenta</button>
             </div>
           </div>
         </div>

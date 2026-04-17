@@ -2,8 +2,7 @@ import { supabase } from "@/app/lib/db";
 
 export async function POST(req) {
   try {
-    const { user_id, og_username, username, email, password, og_password } =
-      await req.json();
+    const { user_id, og_username, username, email, password, og_password } = await req.json();
 
     console.log("Id recibido: ", user_id);
     console.log("Nombre original: ", og_username);

@@ -2,6 +2,8 @@
 
 import styles from "./mainsystem.module.css";
 import Group from "../groups/group";
+import Group_dos from "../groups/group_2";
+import Group_tres from "../groups/group_3";
 import CreateGroup from "../../../../components/create_group";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -87,8 +89,8 @@ function MainSystem() {
           </ul>
 
           <Group />
-          <Group />
-          <Group />
+          <Group_dos />
+          <Group_tres />
         </div>
       </div>
     </div>

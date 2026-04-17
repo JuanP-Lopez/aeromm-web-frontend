@@ -54,7 +54,7 @@ function ChangeUser() {
   const handleClick = () => {
     setLeaving(true);
     setTimeout(() => {
-      router.push("/");
+      router.push("/dashboard/");
     }, 1000);
   };
 

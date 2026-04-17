@@ -1,7 +1,16 @@
+.pageContainer {
+  width: 100vw;
+  height: 200vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .page {
   background-image: url("/fondo.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100vw;
+  height: 100vh;
 }
 
 .mainContainer {
@@ -157,6 +166,14 @@
   transition-duration: 400ms;
   animation: btnHover 8s infinite;
 }
+
+.aboutContainer {
+  width: 100vw;
+  height: 100vh;
+  background-color: aliceblue;
+  transition: up 1s ease-in;
+}
+
 
 @keyframes fadeUp {
   from {
