@@ -20,7 +20,7 @@ function GroupSystem() {
             <td className={styles.data}><FontAwesomeIcon icon={faSquareCheck}></FontAwesomeIcon>Acciones</td>
           </tr>
           <tr>
-            <GroupFull />
+        <GroupFull />
           </tr>
         </table>
       </div>
