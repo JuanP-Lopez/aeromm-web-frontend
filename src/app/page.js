@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import styles from "./page.module.css";
 
@@ -8,6 +10,15 @@ import styles from "./page.module.css";
 import Contact from "../../components/contacto";
 
 export default function Home() {
+  const {data: session, status} = useSession();
+  const router = useRouter();
+
+  useEffect(() => { 
+  if (status === "authenticated") {
+    router.push("/dashboard");
+  }
+}, [status]);
+
   const [showContact, setShowContact] = useState(false);
   return (
     <main className={styles.pageContainer}>
@@ -46,6 +57,8 @@ export default function Home() {
               <Link href="/loginpage">
                 <button className={styles.btnLogin}>Ingresar</button>
               </Link>
+
+              <button onClick={() => signIn("google", { callbackUrl: "/dashboard" })} className={styles.btnGoogle}>Ingresar con Google</button>
             </div>
           </div>
         </div>

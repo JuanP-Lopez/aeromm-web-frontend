@@ -1,13 +1,20 @@
-import { supabase } from "@/app/lib/db";
+import { supabase } from "../../../lib/db";
 
 export async function POST(req) {
   try {
-    const { username, email, password, confirmPassword } = await req.json();
+    const formData = await req.formData();
+
+    const username = formData.get("username");
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const confirmPassword = formData.get("confirmPassword");
+    const pic = formData.get("image");
 
     console.log("Nombre recibido: ", username);
     console.log("Email recibido: ", email);
     console.log("Contraseña recibida: ", password);
     console.log("Confirmación de contraseña: ", confirmPassword);
+    console.log("Imagen: ", pic);
 
     if (password != confirmPassword) {
       return Response.json({
@@ -70,6 +77,43 @@ export async function POST(req) {
       return Response.json({
         success: false,
         error: "Error al crear usuario",
+      });
+    }
+
+    console.log("id: ", newUser[0].id_admin);
+    const userId = newUser[0].id_admin;
+
+    const fileName = `userspfp/id-${userId}-${Date.now()}`;
+    console.log("nombre archivo: ", fileName);
+
+    const { data: fileData, error: fileError } = await supabase.storage
+      .from("ProfilePics")
+      .upload(fileName, pic);
+
+    if (fileError) {
+      console.error("Error subiendo imagen del grupo: ", fileError);
+      return Response.json({
+        success: false,
+        error: "Error al subir imagen del grupo",
+      });
+    }
+
+    const { data: pathData, error: pathError } = await supabase
+      .from("users_assets")
+      .insert([
+        {
+          imagen_path: fileName,
+          categoria: "PFP",
+          id_user: userId,
+        },
+      ])
+      .select();
+
+    if (pathError) {
+      console.error("Error DB:", pathError);
+      return Response.json({
+        success: false,
+        error: "Error al guardar ruta de imagen",
       });
     }
 

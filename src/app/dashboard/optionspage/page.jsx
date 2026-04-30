@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import styles from "./options.module.css";
 
 function GroupSystem() {
+  const { data: session } = useSession();
   const router = useRouter();
   const [user, setUser] = useState("");
   useEffect(() => {
@@ -16,9 +18,8 @@ function GroupSystem() {
     }
   }, []);
 
-
   const deleteAccount = async () => {
-    const id = user.id ;
+    const id = user.id;
 
     console.log("Id recuperado: ", id);
 
@@ -34,11 +35,10 @@ function GroupSystem() {
         localStorage.clear();
         router.push("/");
       }
-
     } catch (error) {
       console.log(error);
     }
-  }
+  };
   return (
     <div className={styles.main}>
       <div className={styles.header}>
@@ -49,13 +49,27 @@ function GroupSystem() {
         <div className={styles.sesion}>
           <h4>Datos de sesión</h4>
           <div className={styles.dataContainer}>
-            <span className={styles.data}>
-              Nombre de usuario: {user.name} |
-            </span>
-            <span className={styles.data}>
-              Correo electrónico: {user.email} |
-            </span>
-            <span className={styles.data}>Id de usuario: {user.id}</span>
+            {session ? (
+              <span>
+                <span className={styles.data}>
+                  Nombre de usuario: {session?.user.name} |
+                </span>
+                <span className={styles.data}>
+                  Correo electrónico: {session?.user.email} |
+                </span>
+              </span>
+            ) : user ? (
+              <span>
+                <span className={styles.data}>
+                  Nombre de usuario: {user.name} |
+                </span>
+                <span className={styles.data}>
+                  Correo electrónico: {user.email} |
+                </span>
+              </span>
+            ) : (
+              <span className={styles.username}>Sistema</span>
+            )}
           </div>
         </div>
 
@@ -96,7 +110,12 @@ function GroupSystem() {
                   Cambiar contraseña
                 </button>
               </Link>
-              <button className="btn btn-outline-danger" onClick={deleteAccount}>Borrar cuenta</button>
+              <button
+                className="btn btn-outline-danger"
+                onClick={deleteAccount}
+              >
+                Borrar cuenta
+              </button>
             </div>
           </div>
         </div>

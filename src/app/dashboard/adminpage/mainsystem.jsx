@@ -5,6 +5,7 @@ import Group from "../groups/group";
 import Group_dos from "../groups/group_2";
 import Group_tres from "../groups/group_3";
 import CreateGroup from "../../../../components/create_group";
+import { useSession } from "next-auth/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,6 +17,9 @@ import {
 import { useState } from "react";
 
 function MainSystem() {
+  const session = useSession();
+  console.log(session);
+
   const [create, setCreate] = useState(false);
 
   return (

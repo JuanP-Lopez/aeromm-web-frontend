@@ -1,4 +1,4 @@
-import { supabase } from "@/app/lib/db";
+import { supabase } from "../../../lib/db"
 
 export async function POST(req) {
   try {
@@ -41,12 +41,28 @@ export async function POST(req) {
       );
     }
 
+    const { data: getPath, error: pathError } = await supabase
+      .from("users_assets")
+      .select("imagen_path")
+      .eq("id_user", user.id_admin)
+
+    console.log(getPath[0].imagen_path);
+    const path = getPath[0].imagen_path;
+
+    const { data: getUrl, error: urlError } = await supabase.storage
+      .from("ProfilePics")
+      .getPublicUrl(path);
+
+    console.log(getUrl);
+    console.log(urlError);
+
     return Response.json({
       success: true,
       user: {
         id: user.id_admin,
         name: user.nombre,
-        email: user.correo
+        email: user.correo,
+        picUrl: getUrl.publicUrl
       }
     });
 

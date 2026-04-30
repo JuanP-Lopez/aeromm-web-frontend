@@ -167,6 +167,27 @@
   animation: btnHover 8s infinite;
 }
 
+.btnGoogle {
+  margin: 40px;
+  width: 360px;
+  height: 40px;
+  color: aliceblue;
+  font-size: 24px;
+  font-weight: bold;
+  border: 4px solid rgb(205, 157, 90);
+  border-radius: 10px 0px 10px 0px;
+  background: none;
+  animation: btnLogin 2s infinite;
+}
+
+.btnGoogle:hover {
+  color: whitesmoke;
+  background-color: rgb(205, 157, 90);
+  scale: 1.1;
+  transition-duration: 400ms;
+  animation: btnHover 8s infinite;
+}
+
 .aboutContainer {
   width: 100vw;
   height: 100vh;
