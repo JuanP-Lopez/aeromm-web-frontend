@@ -1,5 +1,8 @@
 import { supabase } from "../../../../lib/db";
 
+/*Incluir guardado en historial_usuarios para recuperar la fecha, nombre e icono asociado a creacion de grupo
+  para logspage en page.jsx con log-card.jsx
+*/
 export async function POST(req) {
   try {
     const formData = await req.formData();

@@ -1,0 +1,26 @@
+.logcontainer {
+    display: grid;
+    grid-template-columns: 20px 200px 2fr 200px;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid rgb(75, 75, 75);
+}
+
+.icon {
+    color: aliceblue;
+}
+
+.type {
+    color: aliceblue;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.action {
+    color: aliceblue;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: italic;
+}

@@ -1,0 +1,85 @@
+.margin {
+    margin: 10px;
+}
+
+.userCard {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    height: 340px;
+    border-radius: 20px;
+    background-color: antiquewhite;
+    filter: brightness(50%);
+    transition: 200ms ease-in-out;
+}
+
+.background {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 20px;
+}
+
+.userInfo {
+    width: 90%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 2fr 1fr 40px;
+    margin: 10px;
+}
+
+.userData {
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    color: aliceblue;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.userInfo {
+  width: 200px;
+  font-size: 12px;
+  color: white;
+}
+
+.status {
+  align-content: center;
+  border-radius: 20px;
+  background-color: rgb(22, 163, 71);
+  font-weight: 800;
+  color: white; 
+  height: 30px;
+  width: 60px;
+  text-align: center;
+}
+
+.userName {
+    font-size: 16px;
+    font-weight: 700;
+    color: aliceblue;
+    z-index: 2;
+}
+
+.description {
+    z-index: 2;
+    font-size: 12px;
+    font-style: italic;
+    color: aliceblue;
+}
+
+.userCard:hover {
+    filter: brightness(100%);
+    transform: scale(1.02);
+}
+
+.status:hover {
+  background-color: rgb(232, 53, 53);
+}

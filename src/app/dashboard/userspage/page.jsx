@@ -4,10 +4,10 @@ import React from "react";
 import { useState } from "react";
 import Link from "next/link";
 
-import styles from "./groups.module.css";
+import styles from "./users.module.css";
 import GroupFull from "../groups/groupfull";
 import CreateGroup from "../../../../components/create_group";
-import GroupCard from "../../../../components/group-card/group-card";
+import UserCard from "../../../../components/user-card/user-card";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faFilter, faPlusSquare, faClose, faEnvelope} from "@fortawesome/free-solid-svg-icons";
@@ -17,7 +17,7 @@ function GroupSystem() {
   return (
     <div className={styles.main}>
       <div className={styles.header}>
-        <h2>Grupos</h2>
+        <h2>Administrar usuarios</h2>
       </div>
 
       <div className={styles.groupForm}>
@@ -45,31 +45,20 @@ function GroupSystem() {
               <FontAwesomeIcon
                 icon={create ? faClose : faPlusSquare}
                 className={styles.iconOptions}/>
-              <span>{ create ? "Cerrar" : "Crear grupo"}</span>
+              <span>{ create ? "Cerrar" : "Agregar usuario"}</span>
             </button>
             
-            <Link href={"/fastsendpage"} className={styles.link}>
-              <button className="btn btn-outline-success">
-                <FontAwesomeIcon icon={faEnvelope} className={styles.iconOptions} />
-                <span>Envio rápido</span>
-              </button>
-            </Link>
         </div>
       </div>
 
       <div className={styles.groupsContainer}>
 
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        
+        <UserCard />
+        <UserCard />
+        <UserCard />
+        <UserCard />
+        <UserCard />
+        <UserCard />
 
       </div>
     </div>
