@@ -20,7 +20,7 @@
   - User management
   - Email administration
   - Database persistence
-  - Responsive UI /*TODO*/
+  - Responsive UI *(Coming soon)*
   </em>
 
   <a href='https://aeromm.vercel.app'>Access to AeroMailManagement by clicking this text.</a>
