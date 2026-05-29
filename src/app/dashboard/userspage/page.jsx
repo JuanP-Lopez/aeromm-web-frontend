@@ -5,8 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 import styles from "./users.module.css";
-import GroupFull from "../groups/groupfull";
-import CreateGroup from "../../../../components/create_group";
+import CreateGroup from "../../../../components/create-group/create_group";
 import UserCard from "../../../../components/user-card/user-card";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

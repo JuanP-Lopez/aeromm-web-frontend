@@ -1,10 +1,7 @@
 "use client";
 
 import styles from "./mainsystem.module.css";
-import Group from "../groups/group";
-import Group_dos from "../groups/group_2";
-import Group_tres from "../groups/group_3";
-import CreateGroup from "../../../../components/create_group";
+import CreateGroup from "../../../../components/create-group/create_group";
 import { useSession } from "next-auth/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -92,9 +89,6 @@ function MainSystem() {
             <li className={styles.groupData}>Estado</li>
           </ul>
 
-          <Group />
-          <Group_dos />
-          <Group_tres />
         </div>
       </div>
     </div>

@@ -1,0 +1,24 @@
+.badge {
+    min-width: 120px;
+    max-width: 180px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: rgb(106, 90, 205);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 4px;
+    gap: 4px;
+}
+
+.userPfp {
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+}
+
+.user {
+    font-size: 14px;
+    font-weight: 600;
+}

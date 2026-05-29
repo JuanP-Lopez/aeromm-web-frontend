@@ -3,7 +3,8 @@ import { supabase } from "../../../lib/db";
 
 import Log from "../../../../components/log-card/log-card";
 
-import { faUserPlus, faUsersGear, faEnvelope, faQuestion } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserPlus, faUsersGear, faEnvelope, faQuestion, faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./logs.module.css";
 
@@ -12,13 +13,17 @@ export default async function LogsPage(){
     const { data: logs, error: logsError } = await supabase.from("historial_usuarios").select("*").eq("id_usuario", 31);
 
     if (logsError) {
-        return <p>Error cargando historial</p>
+        return <div className={styles.errorContainer}>
+                    <FontAwesomeIcon icon={faExclamationTriangle} className={styles.errorIcon}/>
+                    <p className={styles.error}>Error cargando historial</p>
+                    <FontAwesomeIcon icon={faExclamationTriangle} className={styles.errorIcon}/>
+                </div>
     }
 
     return(
         <div className={styles.main}>
             {/* Incluir funcionalidad renderizado de historial en 
-                Base de datos con estructura for()
+                Base de datos con estructura map()
                 JSON para conseguir icono en base al tipo de accion: 
                     Email - faEnvelope; NewUser - faUserPlus; NewGroup - faUsersGear
             */}

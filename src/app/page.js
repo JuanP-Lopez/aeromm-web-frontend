@@ -7,7 +7,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 
 //Componentes
-import Contact from "../../components/contacto";
+import Contact from "../../components/contact/contacto";
 
 export default function Home() {
   const {data: session, status} = useSession();

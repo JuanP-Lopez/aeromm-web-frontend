@@ -1,12 +1,12 @@
 "use client"
 
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { supabase } from "../../../lib/db";
 import Link from "next/link";
 
 import styles from "./groups.module.css";
-import GroupFull from "../groups/groupfull";
-import CreateGroup from "../../../../components/create_group";
+import CreateGroup from "../../../../components/create-group/create_group";
 import GroupCard from "../../../../components/group-card/group-card";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,6 +14,25 @@ import { faSearch, faFilter, faPlusSquare, faClose, faEnvelope} from "@fortaweso
 
 function GroupSystem() {
   const [create, setCreate] = useState(false);
+
+  const [ groups, setGroups ] = useState([]);
+
+  useEffect (() => {
+    async function getGroups() {
+      const { data: groupsData, error: groupsError } = await supabase.from('grupos').select('*').eq('id_admin', 31);
+
+      console.log(groupsData);
+
+      if (groupsError) {
+        console.error(groupsError);
+      }
+
+      setGroups(groupsData || []);
+    }
+
+    getGroups();
+  }, [])
+
   return (
     <div className={styles.main}>
       <div className={styles.header}>
@@ -59,17 +78,15 @@ function GroupSystem() {
 
       <div className={styles.groupsContainer}>
 
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        <GroupCard />
-        
+        {
+          
+          groups.map((group) => {
+            return(
+            <GroupCard key={group.id_grupo} groupName={group.nombre_grupo} membersCount={group.id_admin} status={group.id_grupo} description={group.descripcion} />
+            );
+          })
+
+        }
 
       </div>
     </div>
