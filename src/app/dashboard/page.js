@@ -1,6 +1,6 @@
 //importar bootstrap antes de los estilos propios
 //Componentes
-import MainSystem from "./adminpage/mainsystem";
+import Statistics from "./statisticspage/page";
 import "./globals.css"
 
 //Incluir filtrado de elementos, ver si cambiando de componente los botones se arregla movimiento
@@ -8,7 +8,7 @@ import "./globals.css"
 export default function Home() {
   return (
     <div className={"dashboard"}>
-        <MainSystem />
+        <Statistics />
       </div>
   );
 }

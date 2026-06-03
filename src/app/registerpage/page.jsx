@@ -142,6 +142,7 @@ function Register() {
               id="file"
               onChange={handleFileChange}
               className={styles.fileInput}
+              required
             />
           </div>
 

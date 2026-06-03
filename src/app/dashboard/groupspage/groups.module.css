@@ -30,17 +30,20 @@
 
 .groupForm {
   box-sizing: border-box;
+  z-index: 10;
   padding: 0;
   margin: 0;
   width: 100%;
   display: flex;
   justify-content: center;
+  position: static;
 }
 
 .createGroup {
   z-index: 10;
   width: 100%;
-  position: absolute;
+  height: 0;
+  position: static;
   opacity: 0;
   pointer-events: none;
   transform: translateY(-20px);

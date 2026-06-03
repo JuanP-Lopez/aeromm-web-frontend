@@ -1,0 +1,67 @@
+.container {
+  box-sizing: border-box;
+  padding: 0;
+  width: 100%;
+  height: calc(100vh - 100px);
+
+  display: grid;
+  padding: 1em;
+  grid-template-areas: 
+  "usersStatistics sessionStatistics sessionStatistics"
+  "groupStatistics templateStatistics membersCount";
+  gap: 1em;
+}
+
+.usersStatistics, .groupStatistics, .sessionStatistics,
+.templateStatistics, .membersCount{
+  border: 2px solid rgb(106, 90, 205);
+  border-radius: 20px;
+
+  padding: 1em;
+  color: aliceblue;
+
+  transition: 300ms ease-in-out;
+}
+
+.usersStatistics {
+  grid-area: usersStatistics;
+}
+
+.sessionStatistics {
+  grid-area: sessionStatistics;
+}
+
+.groupStatistics {
+  grid-area: groupStatistics;
+}
+
+.templateStatistics {
+  grid-area: templateStatistics;
+}
+
+.membersCount {
+  grid-area: membersCount;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.countTitle {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.count {
+  font-size: 48px;
+  font-weight: 900;
+}
+
+.usersStatistics:hover, .groupStatistics:hover, .sessionStatistics:hover,
+.templateStatistics:hover, .membersCount:hover{
+  transform: scale(1.03);
+  box-shadow: 3px 2px rgba(51, 50, 50, 0.8);
+}

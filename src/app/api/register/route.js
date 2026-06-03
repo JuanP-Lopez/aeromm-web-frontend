@@ -1,6 +1,8 @@
-import { supabase } from "../../../lib/db";
+import { createClient } from "../../../lib/supabase/server";
 
 export async function POST(req) {
+  const supabase = await createClient();
+
   try {
     const formData = await req.formData();
 
@@ -60,30 +62,60 @@ export async function POST(req) {
       });
     }*/
 
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    if (authError) {
+      console.error("Error al insertar:", authError);
+      return Response.json({
+        success: false,
+        error: authError.message,
+      });
+    }
+
+    if (!authData?.user) {
+      return Response.json({
+        success: false,
+        error: "No se pudo crear el usuario",
+      });
+    }
+
+    console.log("id: ", authData);
+    const authUserId = authData.user.id;
+
     const { data: newUser, error: insertError } = await supabase
       .from("admins")
       .insert([
         {
           nombre: username,
           correo: email,
-          password: password,
           id_rol: 1,
+          auth_user_id: authUserId,
         },
       ])
       .select();
 
-    if (insertError) {
-      console.error("Error al insertar:", insertError);
+    if (!newUser?.length) {
       return Response.json({
         success: false,
-        error: "Error al crear usuario",
+        error: "No se pudo recuperar el usuario creado"
       });
     }
 
-    console.log("id: ", newUser[0].id_admin);
-    const userId = newUser[0].id_admin;
+    if (insertError) {
+      console.error(insertError);
 
-    const fileName = `userspfp/id-${userId}-${Date.now()}`;
+      return Response.json({
+        success: false,
+        error: "Error al crear registro",
+      });
+    }
+
+    const adminId = newUser[0].id_admin;
+
+    const fileName = `userspfp/id-${authUserId}-${Date.now()}`;
     console.log("nombre archivo: ", fileName);
 
     const { data: fileData, error: fileError } = await supabase.storage
@@ -104,7 +136,7 @@ export async function POST(req) {
         {
           imagen_path: fileName,
           categoria: "PFP",
-          id_user: userId,
+          id_user: adminId,
         },
       ])
       .select();

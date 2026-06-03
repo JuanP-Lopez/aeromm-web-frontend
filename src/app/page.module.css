@@ -161,7 +161,7 @@
 
 .btnLogin:hover {
   color: whitesmoke;
-  background-color: slateblue;
+  background-color: #6a5acd;
   scale: 1.1;
   transition-duration: 400ms;
   animation: btnHover 8s infinite;

@@ -9,14 +9,13 @@ import { usePathname } from "next/navigation";
 import styles from "./navbar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUserMd,
+  faChartBar,
   faUsers,
   faUser,
   faListAlt,
   faLock,
   faDownload,
-  faCogs,
-  faClose,
+  faCogs
 } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
@@ -34,7 +33,7 @@ function Navbar() {
     }
   }, []);
 
-  const [active, setActive] = useState("Sistema");
+  const [active, setActive] = useState("Estadisticas");
 
   const Button = ({ label, icon, href }) => {
     const isActive = pathName === href;
@@ -60,7 +59,7 @@ function Navbar() {
 
       <div className={styles.container}>
         <div className={styles.section}>
-          <Button label={"Sistema"} icon={faUserMd} href={"/dashboard"} />
+          <Button label={"Estadisticas"} icon={faChartBar} href={"/dashboard"} />
           <Button
             label="Grupos"
             icon={faUsers}

@@ -1,56 +1,59 @@
-"use client";
-
+import EmailBadge from "../../../../components/email-badge/email-badge";
 import styles from "./profile.module.css";
 
-import { useState, useEffect } from "react";
-
-function ProfilePage() {
-    const { username, setUsername } = useState("");
-    const { description, setDescription } = useState("");
-    const { date, setDate } = useState("");
-
+function ProfilePage({/* userID */}) {
   return (
-    <main className={styles.main}>
-      <section className={styles.header}>
-        <div className={styles.pic} />
-        <img src="/Profile.jpg" alt="Profile" className={styles.profilePic} />
-
-        <div className={styles.banner} />
-        <img
-            src="/header.png"
-            alt="Header"
-            className={styles.profileHeader}
-          />
-      </section>
-
-      <div className={styles.userinfo}>
-        <h5 className={styles.username}>Nombre usuario</h5>
+    <main className={styles.mainContainer}>
+      <div className={styles.user}>
+        <img src="/profile.jpg" alt="perfil" className={styles.profileImg} />
+        <span className={styles.username}>Cesar Soto</span>
         <textarea
           type="textarea"
           rows={4}
           cols={50}
-          className={styles.userdescription}
+          className={styles.description}
           placeholder="Descripción del usuario"
         />
       </div>
 
-      <section className={styles.infoGrid}>
-        <div className={styles.gridContent}>
-          <h5 className={styles.gridHeader}>Correo electrónico</h5>
-          <h5 className={styles.gridHeader}>Fecha de registro</h5>
-          <h5 className={styles.gridHeader}>Cantidad de grupos creados</h5>
-          <h5 className={styles.gridHeader}>Grupos de los que forma parte</h5>
-        </div>
+      <div className={styles.lastEmails}>
+        <EmailBadge
+          sender={"Cesar"}
+          addressee={"Sistemas"}
+          date={"01-06-2026"}
+        />
+        <EmailBadge
+          sender={"Cesar"}
+          addressee={"Sistemas"}
+          date={"01-06-2026"}
+        />
+        <EmailBadge
+          sender={"Cesar"}
+          addressee={"Sistemas"}
+          date={"01-06-2026"}
+        />
+        <EmailBadge
+          sender={"Cesar"}
+          addressee={"Sistemas"}
+          date={"01-06-2026"}
+        />
+        <EmailBadge
+          sender={"Cesar"}
+          addressee={"Sistemas"}
+          date={"01-06-2026"}
+        />
+      </div>
 
-        <div className={styles.gridContent}></div>
+      <div className={styles.statistics}></div>
 
-        <div className={styles.gridContent}>
-          <h5 className={styles.gridHeader}>Último correo enviado</h5>
-          <h5 className={styles.gridHeader}>Último correo recibido</h5>
-          <h5 className={styles.gridHeader}>Usuarios en la organización</h5>
-          <h5 className={styles.gridHeader}>Fechas más activo</h5>
-        </div>
-      </section>
+      <div className={styles.groups}>
+        <span className={styles.countTitle}>
+          Grupos creados
+        </span>
+        <span className={styles.count}>4</span>
+      </div>
+
+      <div className={styles.templates}></div>
     </main>
   );
 }

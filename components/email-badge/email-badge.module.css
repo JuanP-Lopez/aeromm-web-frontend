@@ -32,6 +32,16 @@
     font-weight: 500;
 }
 
+.badgeContainer:hover {
+    background-color: rgb(106, 90, 205);
+    transform: scale(1.03);
+    transition: 200ms ease-in-out;
+
+    && .icon {    
+        animation: iconHover 1s infinite;
+    }
+}
+
 @keyframes iconIdle {
     0% {
         transform: scale(1) translateX(0);
@@ -41,6 +51,21 @@
     }
     66% {
         transform: scale(1.03) translateY(-4px) rotate(-10deg);
+    }
+    100% {
+        transform: scale(1.03) translateX(0);
+    }
+}
+
+@keyframes iconHover {
+    0% {
+        transform: scale(1) translateX(0);
+    }
+    33% {
+        transform: scale(1.03) translateX(-2px);
+    }
+    66% {
+        transform: scale(1.03) translateX(2px);
     }
     100% {
         transform: scale(1) translateX(0);
