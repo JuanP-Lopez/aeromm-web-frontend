@@ -2,7 +2,6 @@
 
 import styles from "./statistics.module.css";
 import CreateGroup from "../../../../components/create-group/create_group";
-import { useSession } from "next-auth/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,8 +13,6 @@ import {
 import { useState } from "react";
 
 export default  function Statistics() {
-  const session = useSession();
-  console.log(session);
 
   const [create, setCreate] = useState(false);
 

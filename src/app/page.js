@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { signIn, useSession } from "next-auth/react";
+import { createClient } from "../lib/supabase/client";
+
+import { useState } from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
 
@@ -10,14 +10,16 @@ import styles from "./page.module.css";
 import Contact from "../../components/contact/contacto";
 
 export default function Home() {
-  const {data: session, status} = useSession();
-  const router = useRouter();
+  const handleGoogle = async() => {
+    const supabase = createClient();
 
-  useEffect(() => { 
-  if (status === "authenticated") {
-    router.push("/dashboard");
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${window.location.origin}/api/auth/callback`
+      }
+    })
   }
-}, [status]);
 
   const [showContact, setShowContact] = useState(false);
   return (
@@ -58,12 +60,13 @@ export default function Home() {
                 <button className={styles.btnLogin}>Ingresar</button>
               </Link>
 
-              <button onClick={() => signIn("google", { callbackUrl: "/dashboard" })} className={styles.btnGoogle}>Ingresar con Google</button>
+              <button onClick={handleGoogle} className={styles.btnGoogle}>
+                Ingresar con Google
+              </button>
             </div>
           </div>
         </div>
       </div>
-
     </main>
   );
 }

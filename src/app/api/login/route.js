@@ -1,60 +1,78 @@
-import { supabase } from "../../../lib/db"
+import { createClient } from "../../../lib/supabase/server";
 
 export async function POST(req) {
+
   try {
+
+    const supabase = await createClient();
 
     const { email, password } = await req.json();
 
-    console.log("Email recibido:", email);
-    console.log("Contraseña recibida;: ", password)
+    const {
+      data: authData,
+      error: authError,
+    } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-    const { data, error } = await supabase
+    if (authError) {
+      return Response.json(
+        {
+          success: false,
+          message: authError.message,
+        },
+        {
+          status: 401,
+        }
+      );
+    }
+
+    const authUserId = authData.user.id;
+
+    const {
+      data: user,
+      error: userError,
+    } = await supabase
       .from("admins")
       .select("*")
-      .eq("correo", email);
+      .eq("auth_user_id", authUserId)
+      .single();
 
-    console.log("Resultado DB:", data);
-    console.log("Error DB:", error);
-
-    if (error) {
-      console.error(error);
+    if (userError || !user) {
       return Response.json(
-        { success: false, message: "Error consultando la base" },
-        { status: 500 }
+        {
+          success: false,
+          message: "Perfil no encontrado",
+        },
+        {
+          status: 404,
+        }
       );
     }
 
-    if (!data || data.length === 0) {
-      console.error(error);
-      return Response.json(
-        { success: false, message: "Usuario no encontrado" },
-        { status: 401 }
-      );
-    }
-
-    const user = data[0];
-
-    if (user.password !== password) {
-      return Response.json(
-        { success: false, message: "Contraseña incorrecta" },
-        { status: 401 }
-      );
-    }
-
-    const { data: getPath, error: pathError } = await supabase
+    const {
+      data: getPath,
+    } = await supabase
       .from("users_assets")
       .select("imagen_path")
       .eq("id_user", user.id_admin)
+      .single();
 
-    console.log(getPath[0].imagen_path);
-    const path = getPath[0].imagen_path;
+    let picUrl = null;
 
-    const { data: getUrl, error: urlError } = await supabase.storage
-      .from("ProfilePics")
-      .getPublicUrl(path);
+    if (getPath?.imagen_path) {
 
-    console.log(getUrl);
-    console.log(urlError);
+      const {
+        data: getUrl,
+      } = supabase.storage
+        .from("ProfilePics")
+        .getPublicUrl(
+          getPath.imagen_path
+        );
+
+      picUrl = getUrl.publicUrl;
+    }
 
     return Response.json({
       success: true,
@@ -62,8 +80,8 @@ export async function POST(req) {
         id: user.id_admin,
         name: user.nombre,
         email: user.correo,
-        picUrl: getUrl.publicUrl
-      }
+        picUrl,
+      },
     });
 
   } catch (error) {
@@ -71,9 +89,16 @@ export async function POST(req) {
     console.error(error);
 
     return Response.json(
-      { success: false, message: "Error interno del servidor" },
-      { status: 500 }
+      {
+        success: false,
+        message:
+          "Error interno del servidor",
+      },
+      {
+        status: 500,
+      }
     );
 
   }
+
 }

@@ -25,7 +25,6 @@ function Login() {
       const result = await res.json();
       console.log("Respuesta del servidor: ", result);
       if (result.success == true) {
-        localStorage.setItem("user", JSON.stringify(result.user));
         router.push("/dashboard");
       }
     } catch (error) {

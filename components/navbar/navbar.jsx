@@ -17,21 +17,29 @@ import {
   faDownload,
   faCogs
 } from "@fortawesome/free-solid-svg-icons";
+import { stringifyCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 function Navbar() {
-  const { data: session } = useSession();
-  console.log("Sesion: ", session);
-
   const pathName = usePathname();
 
   const [user, setUser] = useState(null);
+  
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+    async function loadUser() {
+      const res = await fetch("/api/me");
 
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      const data = await res.json();
+
+      if (data.success) {
+        setUser(data.admin);
+      }
     }
+
+    loadUser();
   }, []);
+
+  console.log("User: ", user)
+  console.log(user?.pfpUrl);
 
   const [active, setActive] = useState("Estadisticas");
 
@@ -86,31 +94,28 @@ function Navbar() {
           />
         </div>
         <div className={styles.userinfo}>
-          {session ? (
-            <div className={styles.user}>
-              <img
-                src={session?.user.image}
-                onError={() => console.log("falló imagen")}
-                onLoad={() => console.log("cargó imagen")}
-                alt="PFP"
-                className={styles.userpfp}
-              />
+          <div className={styles.user}>
+              <Link href={"/dashboard/profilepage/"}>
+                <img src={user?.pfpUrl} alt="PFP" className={styles.userpfp} />
+              </Link>
               <div className={styles.usermaininfo}>
-                <span className={styles.username}>{session?.user.name}</span>
+                <span className={styles.username}>{user?.nombre}</span>
               </div>
             </div>
-          ) : user ? (
+
+          {/* {user ? (
             <div className={styles.user}>
               <Link href={"/dashboard/profilepage/"}>
                 <img src={user.picUrl} alt="PFP" className={styles.userpfp} />
               </Link>
               <div className={styles.usermaininfo}>
-                <span className={styles.username}>{user.name}</span>
+                <span className={styles.username}>{user.admin.nombre}</span>
               </div>
             </div>
           ) : (
             <span className={styles.username}>Sistema</span>
-          )}
+          )} */}
+          
         </div>
       </div>
     </nav>
