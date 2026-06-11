@@ -1,12 +1,26 @@
+import { getCurrentAdmin } from "../../../services/auth.service";
+import { getSendedEmails } from "../../../services/auth.service";
+
 import EmailBadge from "../../../../components/email-badge/email-badge";
 import styles from "./profile.module.css";
 
-function ProfilePage({/* userID */}) {
+export default async function ProfilePage() {
+
+  const admin = await getCurrentAdmin();
+
+  const emails = await getSendedEmails();
+
+
+  console.log("Profile page:", admin);
+  console.log("Emails: ", emails);
+  console.log("Tipo:", typeof emails);
+  console.log("Es array:", Array.isArray(emails));
+
   return (
     <main className={styles.mainContainer}>
       <div className={styles.user}>
-        <img src="/profile.jpg" alt="perfil" className={styles.profileImg} />
-        <span className={styles.username}>Cesar Soto</span>
+        <img src={admin.pfpUrl} alt="perfil" className={styles.profileImg} />
+        <span className={styles.username}>{admin.nombre}</span>
         <textarea
           type="textarea"
           rows={4}
@@ -17,31 +31,20 @@ function ProfilePage({/* userID */}) {
       </div>
 
       <div className={styles.lastEmails}>
-        <EmailBadge
-          sender={"Cesar"}
-          addressee={"Sistemas"}
-          date={"01-06-2026"}
-        />
-        <EmailBadge
-          sender={"Cesar"}
-          addressee={"Sistemas"}
-          date={"01-06-2026"}
-        />
-        <EmailBadge
-          sender={"Cesar"}
-          addressee={"Sistemas"}
-          date={"01-06-2026"}
-        />
-        <EmailBadge
-          sender={"Cesar"}
-          addressee={"Sistemas"}
-          date={"01-06-2026"}
-        />
-        <EmailBadge
-          sender={"Cesar"}
-          addressee={"Sistemas"}
-          date={"01-06-2026"}
-        />
+
+        {
+          emails.emails.map((email) => {
+            return (
+              <EmailBadge
+              key={email.id}
+              sender={email.nombre}
+              addressee={email.nombre_grupo}
+              date={email.fecha_envio}
+              />
+            );
+          })
+        }
+        
       </div>
 
       <div className={styles.statistics}></div>
@@ -57,5 +60,3 @@ function ProfilePage({/* userID */}) {
     </main>
   );
 }
-
-export default ProfilePage;

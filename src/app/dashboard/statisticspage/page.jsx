@@ -18,10 +18,22 @@ export default  function Statistics() {
 
   return (
     <main className={styles.container}>
-      <div className={styles.usersStatistics}>Usuarios que más correos enviaron</div>
-      <div className={styles.groupStatistics}>Grupos con mayor numero de correos enviados</div>
-      <div className={styles.sessionStatistics}>Estadisticas del usuario (grupos creados, correos enviados y plantillas usadas)</div>
-      <div className={styles.templateStatistics}>Plantillas más usadas</div>
+
+      <div className={styles.usersStatistics}>Usuarios que más correos enviaron
+        <img src="/graficas/usersStatistics.png" alt="" className={styles.img}/>
+      </div>
+
+      <div className={styles.groupStatistics}>Grupos con mayor numero de correos enviados
+        <img src="/graficas/groupsStatistics.png" alt="" className={styles.img}/>
+      </div>
+
+      <div className={styles.sessionStatistics}>Estadisticas del usuario (grupos creados, correos enviados y plantillas usadas)
+        <img src="/graficas/sessionStatistics.png" alt="" className={styles.img}/>
+      </div>
+
+      <div className={styles.templateStatistics}>Plantillas más usadas
+        <img src="/graficas/templateStatistics.png" alt="" className={styles.img}/>
+      </div>
 
       <div className={styles.membersCount}>
         <span className={styles.countTitle}>Contador total de miembros<br />en la organización</span>

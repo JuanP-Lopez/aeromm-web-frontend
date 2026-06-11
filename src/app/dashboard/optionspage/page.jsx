@@ -1,13 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import styles from "./options.module.css";
 
 function GroupSystem() {
-  const { data: session } = useSession();
   const router = useRouter();
   const [user, setUser] = useState("");
   useEffect(() => {
@@ -49,16 +47,8 @@ function GroupSystem() {
         <div className={styles.sesion}>
           <h4>Datos de sesión</h4>
           <div className={styles.dataContainer}>
-            {session ? (
-              <span>
-                <span className={styles.data}>
-                  Nombre de usuario: {session?.user.name} |
-                </span>
-                <span className={styles.data}>
-                  Correo electrónico: {session?.user.email} |
-                </span>
-              </span>
-            ) : user ? (
+            {
+              user ? (
               <span>
                 <span className={styles.data}>
                   Nombre de usuario: {user.name} |

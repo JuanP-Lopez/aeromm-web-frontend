@@ -1,5 +1,4 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { Providers } from "./Providers";
 
 import "./globals.css";
 
@@ -28,9 +27,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
           <main>
-            <Providers>
             {children}
-            </Providers>
           </main>
       </body>
     </html>

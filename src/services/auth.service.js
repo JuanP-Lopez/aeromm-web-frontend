@@ -50,3 +50,31 @@ export async function getCurrentAdmin() {
   };
 }
 
+export async function getSendedEmails() {
+  const supabase = await createClient();
+
+  const admin = await getCurrentAdmin();
+
+  console.log("Admin de emails: ", admin)
+
+  console.log("Consultar correos: ");
+  const { data: getEmails, error : errorEmails } = await supabase
+    .from("vw_recent_emails")
+    .select("*")
+    .eq("id_admin", admin.id)
+    .order("fecha_envio", { ascending: false })
+    .limit(5);
+
+  console.log("Resultado emails: ", getEmails);
+  console.log("Error emails: ", errorEmails);
+
+  if (errorEmails) {
+    console.log(errorEmails);
+    return null;
+  }
+
+  return {
+    emails: getEmails
+  };
+
+}

@@ -21,22 +21,44 @@
   color: aliceblue;
 
   transition: 300ms ease-in-out;
+
+  height: 280px;
 }
 
 .usersStatistics {
   grid-area: usersStatistics;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: black;
 }
 
 .sessionStatistics {
   grid-area: sessionStatistics;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: black;
 }
 
 .groupStatistics {
   grid-area: groupStatistics;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: black;
 }
 
 .templateStatistics {
   grid-area: templateStatistics;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: black;
 }
 
 .membersCount {
@@ -47,6 +69,8 @@
 
   align-items: center;
   justify-content: center;
+
+  background-color: black;
 }
 
 .countTitle {
@@ -64,4 +88,9 @@
 .templateStatistics:hover, .membersCount:hover{
   transform: scale(1.03);
   box-shadow: 3px 2px rgba(51, 50, 50, 0.8);
+}
+
+.img {
+  width: 440px;
+  height: 220px;
 }

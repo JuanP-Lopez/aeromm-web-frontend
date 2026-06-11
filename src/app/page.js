@@ -63,6 +63,7 @@ export default function Home() {
               <button onClick={handleGoogle} className={styles.btnGoogle}>
                 Ingresar con Google
               </button>
+              
             </div>
           </div>
         </div>

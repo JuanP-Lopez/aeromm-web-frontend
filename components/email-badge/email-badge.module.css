@@ -1,5 +1,5 @@
 .badgeContainer {
-    width: 100%;
+    width: auto;
     height: 3em;
     display: flex;
     flex-direction: row;
