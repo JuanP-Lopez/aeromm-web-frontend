@@ -4,11 +4,11 @@ import styles from "./group-card.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
 
-function GroupCard({groupName, membersCount, status, description}) {
+function GroupCard({groupName, membersCount, status, description, groupImg}) {
     return (
         <div className={styles.margin}>
             <div className={styles.groupCard}>
-                <img src="/fondo.jpg" alt="" className={styles.background}/>
+                <img src={groupImg} alt="" className={styles.background}/>
                 <div className={styles.groupInfo}>
                     <span className={styles.groupName}>{groupName}</span>
                     <div className={styles.groupData}>

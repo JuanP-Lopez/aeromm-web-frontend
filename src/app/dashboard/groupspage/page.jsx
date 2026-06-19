@@ -25,22 +25,19 @@ function GroupSystem() {
 
   useEffect(() => {
     async function getGroups() {
-      const { data: groupsData, error: groupsError } = await supabase
-        .from("grupos")
-        .select("*")
-        .eq("id_admin", 31);
+      const res = await fetch("/api/groups/get");
 
-      console.log(groupsData);
+      const groupsData = await res.json();
 
-      if (groupsError) {
-        console.error(groupsError);
-      }
+      setGroups(groupsData.groupsData || []);
 
-      setGroups(groupsData || []);
+      console.log("Grupos recuperados: ", groupsData);
     }
 
     getGroups();
   }, []);
+
+  console.log("Solo grupos: ", groups)
 
   return (
     <div className={styles.main}>
@@ -94,11 +91,12 @@ function GroupSystem() {
         {groups.map((group) => {
           return (
             <GroupCard
-              key={group.id_grupo}
-              groupName={group.nombre_grupo}
-              membersCount={group.id_admin}
-              status={group.id_grupo}
-              description={group.descripcion}
+              key={group.group.id_grupo}
+              groupName={group.group.nombre_grupo}
+              membersCount={group.group.id_admin}
+              status={group.group.id_grupo}
+              description={group.group.descripcion}
+              groupImg={group.imageUrl}
             />
           );
         })}

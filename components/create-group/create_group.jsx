@@ -4,20 +4,30 @@ import { useEffect, useState } from "react";
 import styles from "./create_group.module.css";
 
 function CreateGroup() {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
   const [group, setGroup] = useState("");
   const [description, setDescription] = useState("");
   const [pic, setPic] = useState(null);
   const [preview, setPreview] = useState(null);
-
+  
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+    async function loadUser() {
+      const res = await fetch("/api/me");
 
-    if (storedUser) {
-      const user = JSON.parse(storedUser);
-      setUser(user.id);
+      const data = await res.json();
+
+      console.log("Respuesta create_group:", data)
+
+      if (data.success) {
+        setUser(data.admin);
+      }
     }
+
+    loadUser();
   }, []);
+
+  console.log("User: ", user);
+  console.log("ID:", user?.id);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -38,8 +48,11 @@ function CreateGroup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log("Usuario actual:", user);
+    console.log("ID actual:", user?.id);
+
     const formData = new FormData();
-    formData.append("id", user)
+    formData.append("id", user.id)
     formData.append("group", group);
     formData.append("description", description);
     formData.append("image", pic);
@@ -103,6 +116,7 @@ function CreateGroup() {
                 id="file"
                 onChange={handleFileChange}
                 className={styles.fileInput}
+                required
               />
             </div>
 
