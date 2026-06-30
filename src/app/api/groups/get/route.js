@@ -41,8 +41,7 @@ export async function GET() {
     const groupsWithUrls = groups.map((group) => {
       const { data } = supabase.storage
         .from("GroupsPics")
-        .getPublicUrl(group.imagen_path);
-      
+        .getPublicUrl(group.imagen_path);      
       return {
         group, imageUrl: data.publicUrl
       };

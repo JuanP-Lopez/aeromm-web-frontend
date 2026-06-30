@@ -38,7 +38,7 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     const formData = new FormData();
     formData.append("username", username);
     formData.append("email", email);

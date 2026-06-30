@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useState, useEffect } from "react";
-import { supabase } from "../../../lib/db";
 import Link from "next/link";
 
 import styles from "./groups.module.css";
@@ -37,7 +36,7 @@ function GroupSystem() {
     getGroups();
   }, []);
 
-  console.log("Solo grupos: ", groups)
+  console.log("Solo grupos: ", groups);
 
   return (
     <div className={styles.main}>
@@ -90,14 +89,15 @@ function GroupSystem() {
       <div className={styles.groupsContainer}>
         {groups.map((group) => {
           return (
-            <GroupCard
-              key={group.group.id_grupo}
-              groupName={group.group.nombre_grupo}
-              membersCount={group.group.id_admin}
-              status={group.group.id_grupo}
-              description={group.group.descripcion}
-              groupImg={group.imageUrl}
-            />
+            <Link href={`/dashboard/groupspage/${group.group.id_grupo}`} key={group.group.id_grupo} className={styles.link}>
+              <GroupCard
+                groupName={group.group.nombre_grupo}
+                membersCount={group.group.no_miembros}
+                status={group.group.estado}
+                description={group.group.descripcion}
+                groupImg={group.imageUrl}
+              />
+            </Link>
           );
         })}
       </div>
